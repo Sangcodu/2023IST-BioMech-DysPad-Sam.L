@@ -1,17 +1,21 @@
 /*
 Author: Roman Lacbungan
-Notes:
-Button	Case
+!!YOU HAVE TO CHANGE KEYBINDS AS THESE AREN'T DEFAULT (REFER TO CONTROLS BELOW)!!
+( •̀ ω •́ )y
+BPIN   	Case
 2	      0
 3	      1
 4	      2
 5	      3
 
 Controls (excluding joystick):
-- Jump
-- Dash
-- Interact
-- Climb 
+- Jump = A
+- Climb = B
+- Dash = C
+- Pause = D
+- Talk/Interact = E
+
+not yet added joystick look combo thing i add it later
 */
 
 #include <Keyboard.h>
@@ -53,19 +57,13 @@ void loop() {
         for (int j = i + 1; j < sizeof(buttonPins)/sizeof(buttonPins[0]); j++) {
           if (buttonStates[j] == LOW) { // check if another button is pressed
             switch(j) {
-              case 0:
-                Keyboard.press('e'); // talk
-                break;
               case 1:
-                Keyboard.press('e'); // talk
+                Keyboard.press('e'); // talk to npc
                 break;
             }
             delay(50); // wait for a short period of time
             
             switch(j) {
-              case 0:
-                Keyboard.release('e'); // talk
-                break;
               case 1:
                 Keyboard.release('e'); // talk
                 break;
