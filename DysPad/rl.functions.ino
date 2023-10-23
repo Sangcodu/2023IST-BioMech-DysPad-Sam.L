@@ -1,7 +1,7 @@
 /*
 Author: Roman Lacbungan
 !!YOU HAVE TO CHANGE KEYBINDS AS THESE AREN'T DEFAULT (REFER TO CONTROLS BELOW)!!
-( •̀ ω •́ )y
+
 BPIN   	Case
 2	      0
 3	      1
@@ -9,11 +9,11 @@ BPIN   	Case
 5	      3
 
 Controls (excluding joystick):
-- Jump = A
-- Climb = B
-- Dash = C
-- Pause = D
-- Talk/Interact = E
+- Jump = A = Case 0
+- Climb = B = Case 1
+- Dash = C = Case 2
+- Pause = D = Case 3
+- Talk/Interact = E = Case 1
 
 not yet added joystick look combo thing i add it later
 */
@@ -26,7 +26,6 @@ int lastButtonStates[] = {0, 0, 0, 0}; // previous state of the buttons
 
 void setup() {
   for (int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++) {
-    pinMode(buttonPins[i], INPUT_PULLUP); // initialize the button pins as pullup inputs
   }
   
   Keyboard.begin(); // initialize the Keyboard library
@@ -65,7 +64,7 @@ void loop() {
             
             switch(j) {
               case 1:
-                Keyboard.release('e'); // talk
+                Keyboard.release('e'); // talk to npc
                 break;
             }
           }
@@ -84,9 +83,10 @@ void loop() {
           case 3:
             Keyboard.release('d'); // pause
             break;
-        }
-      }
-      lastButtonStates[i] = buttonStates[i]; // update the previous button state
+        } 
+      } 
     }
+    
+    lastButtonStates[i] = buttonStates[i]; // save the current state as the last state for next time through the loop
   }
 }
