@@ -8,9 +8,9 @@ It has an inclined interface that is easy to use and a groundbreaking combo feat
 
 <h2>Member roles</h2>
 
-Roman: Buttons
+Roman: Buttons, Rotary potentiometer
 
-Ethan: OLED Screen, Rotary potentiometer
+Ethan: OLED Screen
 
 Sam: Joystick
 
