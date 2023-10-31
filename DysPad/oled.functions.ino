@@ -1,20 +1,16 @@
+void config ();
 #include <Arduino.h>
 #include <U8g2lib.h>
 #include <Wire.h>
-
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);  // High-speed I2C
 
-int textX = 0;  // Initial X position of the text
-unsigned long startTime;
-
-// Define animation duration in milliseconds (18 seconds)
-const unsigned long animationDuration = 10000;
-
-int potPIN = A0;  // Potentiometer pin
-int potValue = 0;  // Potentiometer reading
-
-void setup(void) {
+void setup(myPOTOLED) {
   u8g2.begin();
+  int textX = 0;
+  unsigned long startTime;
+  const unsigned long animationDuration = 10000;
+  int potPIN = A0;  // Potentiometer pin
+  int potValue = 0;  // Potentiometer reading
   startTime = millis();
 }
 
@@ -61,3 +57,8 @@ void displayText(const char *text) {
   u8g2.sendBuffer();
   delay(100);
 }
+
+
+
+
+
