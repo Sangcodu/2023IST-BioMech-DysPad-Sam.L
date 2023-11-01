@@ -21,3 +21,5 @@ Sam: Joystick
 23/10/23 - Finished mapping out buttons and volume function for rotary encoder. OLED screen finished displaying output and joystick is being worked on.
 
 25/10/23 - Added "Anna" scrolling animation to the OLED screen. Reacts to a keypress with a quick key history.
+
+1/11/23 - Added feature to rotary potentiometer where it changes OLED display, revamped buttons functions, testing joystick
