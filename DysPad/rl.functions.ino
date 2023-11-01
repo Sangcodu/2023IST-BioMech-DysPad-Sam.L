@@ -1,92 +1,58 @@
-/*
-Author: Roman Lacbungan
-!!YOU HAVE TO CHANGE KEYBINDS AS THESE AREN'T DEFAULT (REFER TO CONTROLS BELOW)!!
-
-BPIN   	Case
-2	      0
-3	      1
-4	      2
-5	      3
-
-Controls (excluding joystick):
-- Jump = A = Case 0
-- Climb = B = Case 1
-- Dash = C = Case 2
-- Pause = D = Case 3
-- Talk/Interact = E = Case 1
-
-not yet added joystick look combo thing i add it later
-*/
+// thanks to https://roboticsbackend.com/arduino-input_pullup-pinmode/ helped alot
+// libaries being used: Keyboard
 
 #include <Keyboard.h>
 
-const int buttonPins[] = {2, 3, 4, 5}; // the pins that the pushbuttons are attached to
-int buttonStates[] = {0, 0, 0, 0}; // current state of the buttons
-int lastButtonStates[] = {0, 0, 0, 0}; // previous state of the buttons
+unsigned int BUTTON_PIN1 = D5;
+unsigned int BUTTON_PIN2 = D6;
+unsigned int BUTTON_PIN3 = D7;
+unsigned int BUTTON_PIN4 = D8;
 
 void setup() {
-  for (int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++) {
-  }
-  
-  Keyboard.begin(); // initialize the Keyboard library
+  Keyboard.begin();
+
+  pinMode(BUTTON_PIN1, INPUT_PULLUP);
+  pinMode(BUTTON_PIN2, INPUT_PULLUP);
+  pinMode(BUTTON_PIN3, INPUT_PULLUP);
+  pinMode(BUTTON_PIN4, INPUT_PULLUP);
 }
 
 void loop() {
-  for (int i = 0; i < sizeof(buttonPins)/sizeof(buttonPins[0]); i++) {
-    buttonStates[i] = digitalRead(buttonPins[i]); // read the state of each button
 
-    if (buttonStates[i] != lastButtonStates[i]) { // check if the button state has changed
-      if (buttonStates[i] == LOW) { // check if the button is pressed
-        switch(i) {
-          case 0:
-            Keyboard.press('a'); // jump
-            break;
-          case 1:
-            Keyboard.press('b'); // climb
-            break;
-          case 2:
-            Keyboard.press('c'); // dash
-            break;
-          case 3:
-            Keyboard.press('d'); // pause
-            break;
-        }
-        delay(50); // wait for a short period of time
-        
-        for (int j = i + 1; j < sizeof(buttonPins)/sizeof(buttonPins[0]); j++) {
-          if (buttonStates[j] == LOW) { // check if another button is pressed
-            switch(j) {
-              case 1:
-                Keyboard.press('e'); // talk to npc
-                break;
-            }
-            delay(50); // wait for a short period of time
-            
-            switch(j) {
-              case 1:
-                Keyboard.release('e'); // talk to npc
-                break;
-            }
-          }
-        }
-        
-        switch(i) {
-          case 0:
-            Keyboard.release('a'); // jump
-            break;
-          case 1:
-            Keyboard.release('b'); // climb
-            break;
-          case 2:
-            Keyboard.release('c'); // dash
-            break;
-          case 3:
-            Keyboard.release('d'); // pause
-            break;
-        } 
-      } 
-    }
-    
-    lastButtonStates[i] = buttonStates[i]; // save the current state as the last state for next time through the loop
+  // combo which is quick restart in-game
+  if (digitalRead(BUTTON_PIN1) == LOW + digitalRead(BUTTON_PIN2)) {
+  Keyboard.press('R');
+  } else {
+  Keyboard.release('R');
   }
+
+  // dash
+  if (digitalRead(BUTTON_PIN1) == LOW) {
+    Keyboard.press('X');
+  } else {
+    Keyboard.release('X');
+  }
+
+  // grab or interact
+  if (digitalRead(BUTTON_PIN2) == LOW) {
+    Keyboard.press('Z');
+  } else {
+    Keyboard.release('Z');
+  }
+  
+  // jump
+  if (digitalRead(BUTTON_PIN3) == LOW) {
+    Keyboard.press('C');
+  } else {
+    Keyboard.release('C');
+  }
+
+  // pause
+  if (digitalRead(BUTTON_PIN4) == LOW) {
+    Keyboard.press('KEY_ESC');
+  } else {
+    Keyboard.release('KEY_ESC');
+  }
+
+  delay(100);
 }
