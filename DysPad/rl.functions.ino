@@ -1,4 +1,3 @@
-// thanks to https://roboticsbackend.com/arduino-input_pullup-pinmode/ helped alot
 // libaries being used: Keyboard
 
 #include <Keyboard.h>
