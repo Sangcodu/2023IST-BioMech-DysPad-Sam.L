@@ -12,9 +12,9 @@ DysPad introduces an ergonomically inclined interface, meticulously crafted to e
 
 The controller boasts a revolutionary combo feature, empowering users to effortlessly execute complex actions. Tailored for gaming enthusiasts and individuals engaged in various activities, DysPad's combo feature amplifies ease of use and functionality, ushering in a new era of versatile and adaptive controllers.
 
-### Digital Display and Volume Knob
+### Digital Display and Control Knob
 
-DysPad integrates a digital display and volume knob seamlessly into its design. These additions serve as pivotal components in enhancing accessibility. The digital display provides users with real-time information and settings, while the volume knob ensures swift control over audio output. DysPad's commitment to user-friendly design is evident in these thoughtful elements.
+DysPad integrates a digital display and volume knob seamlessly into its design. These additions serve as pivotal components in enhancing accessibility. The digital display provides users with real-time information and settings, while the control knob ensures swift control over digital display. DysPad's commitment to user-friendly design is evident in these thoughtful elements.
 
 ## Task Delegation: Collaborative Excellence
 
