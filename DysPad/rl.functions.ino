@@ -17,34 +17,34 @@ void setup() {
 }
 
 void loop() {
-  if (digitalRead(BUTTON_PIN1) == HIGH && (digitalRead(BUTTON_PIN2) == HIGH) {
+  if (digitalRead(BUTTON_PIN1) == HIGH && digitalRead(BUTTON_PIN2) == HIGH) {
     Keyboard.press('r');
   } else {
-    Keyboard.releaseAll();
+    Keyboard.release('r');
   }
 
   if (digitalRead(BUTTON_PIN1) == HIGH) {
     Keyboard.press('x');
   } else {
-    Keyboard.releaseAll();
+    Keyboard.release('x');
   }
 
   if (digitalRead(BUTTON_PIN2) == HIGH) {
     Keyboard.press('z');
   } else {
-    Keyboard.releaseAll();
+    Keyboard.release('z');
   }
   
   if (digitalRead(BUTTON_PIN3) == HIGH) {
     Keyboard.press('c');
   } else {
-    Keyboard.releaseAll();
+    Keyboard.release('c');
   }
 
   if (digitalRead(BUTTON_PIN4) == HIGH) {
     Keyboard.press(KEY_ESC);
   } else {
-    Keyboard.releaseAll();
+    Keyboard.release(KEY_ESC);
   }
 
   delay(100);
