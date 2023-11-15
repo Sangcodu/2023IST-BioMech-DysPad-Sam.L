@@ -1,3 +1,6 @@
+#include <Mouse.h>
+#include <Keyboard.h>
+
 #define VRX_PIN  A0 // Arduino pin connected to VRX pin
 #define VRY_PIN  A1 // Arduino pin connected to VRY pin
 #define SWITCH_PIN 2 // Arduino pin connected to the switch
@@ -13,15 +16,10 @@
 #define COMMAND_UP     0x04
 #define COMMAND_DOWN   0x08
 
-int xValue = 0 ; // To store value of the X axis
-int yValue = 0 ; // To store value of the Y axis
+int xValue = 0; // To store value of the X axis
+int yValue = 0; // To store value of the Y axis
 int command = COMMAND_NO;
 bool cameraMode = false; // Variable to track the camera mode
-
-void setup() {
-  Serial.begin(9600);
-  pinMode(SWITCH_PIN, INPUT_PULLUP); // Set the switch pin as an input with internal pull-up resistor
-}
 
 void performGameAction(int action) {
   // Add code here to perform game actions based on the command
@@ -31,18 +29,22 @@ void performGameAction(int action) {
       case COMMAND_LEFT:
         Serial.println("Camera LEFT");
         // Implement camera movement to the left
+        Mouse.move(-10, 0); // Mouse cursor move to the left 10 pixels
         break;
       case COMMAND_RIGHT:
         Serial.println("Camera RIGHT");
         // Implement camera movement to the right
+        Mouse.move(10, 0); // Mouse cursor move to the right 10 pixels
         break;
       case COMMAND_UP:
         Serial.println("Camera UP");
         // Implement camera movement upwards
+        Mouse.move(0, -10); // Mouse cursor move up 10 pixels
         break;
       case COMMAND_DOWN:
         Serial.println("Camera DOWN");
         // Implement camera movement downwards
+        Mouse.move(0, 10); // Mouse cursor move down 10 pixels
         break;
       // Add more cases for other commands if needed
     }
@@ -52,22 +54,39 @@ void performGameAction(int action) {
       case COMMAND_LEFT:
         Serial.println("Character LEFT");
         // Implement character movement to the left
+        Keyboard.press('A'); // Simulate pressing the 'A' key
+        delay(50); // Add a small delay to hold the key
+        Keyboard.release('A'); // Release the 'A' key
         break;
       case COMMAND_RIGHT:
         Serial.println("Character RIGHT");
         // Implement character movement to the right
+        Keyboard.press('D'); // Simulate pressing the 'D' key
+        delay(50); // Add a small delay to hold the key
+        Keyboard.release('D'); // Release the 'D' key
         break;
       case COMMAND_UP:
         Serial.println("Character UP");
         // Implement character movement upwards
+        Keyboard.press('W'); // Simulate pressing the 'W' key
+        delay(50); // Add a small delay to hold the key
+        Keyboard.release('W'); // Release the 'W' key
         break;
       case COMMAND_DOWN:
         Serial.println("Character DOWN");
         // Implement character movement downwards
+        Keyboard.press('S'); // Simulate pressing the 'S' key
+        delay(50); // Add a small delay to hold the key
+        Keyboard.release('S'); // Release the 'S' key
         break;
       // Add more cases for other commands if needed
     }
   }
+}
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(SWITCH_PIN, INPUT_PULLUP); // Set the switch pin as an input with an internal pull-up resistor
 }
 
 void loop() {
